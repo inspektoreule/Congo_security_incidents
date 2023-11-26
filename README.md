@@ -1,7 +1,7 @@
 # Eastern Congo Security Incidents Project 
   
-# Welcome to the Eastern Congo Security Incidents Capstone Project, which is my final project for the Google Data Analytics Course. 
-# Since I am taking the course while I am working in eastern Congo in a peacebuilding project, I wanted to find a project related to the local context. 
+Welcome to the Eastern Congo Security Incidents Capstone Project, which is my final project for the Google Data Analytics Course. 
+Since I am taking the course while I am working in eastern Congo in a peacebuilding project, I wanted to find a project related to the local context. 
 
 # The analysis is based on the University of Uppsala Conflict Data Programm [https://ucdp.uu.se/], which records security incidents worldwide. 
 # I am using the "UCDP Georeferenced Event Dataset" (GED). Unfortunately, I do not remember which version I used for the initial analysis, but it contained entries until early 2021. 
