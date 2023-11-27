@@ -1,28 +1,3 @@
-# Eastern Congo Security Incidents Project 
-  
-# Welcome to the Eastern Congo Security Incidents Capstone Project, which is my final project for the Google Data Analytics Course. 
-# Since I am taking the course while I am working in eastern Congo in a peacebuilding project, I wanted to find a project related to the local context. 
-
-# The analysis is based on the University of Uppsala Conflict Data Programm [https://ucdp.uu.se/], which records security incidents worldwide. 
-# I am using the "UCDP Georeferenced Event Dataset (GED)". Unfortunately, I do not remember which version I used for the initial analysis, but it contained entries until early 2021. 
-# Since the context in eastern DRC has changed significantly since then, I did an update in May/June 2023 with an updated version that contains entries until the end of 2022 (Version 23.1.). 
-# When I was almost done, I realised that, in contrast to the main dataset that is updated and published once a year, there is also a continuously updated version. I thus updated the 
-# analysis again and added the data from January-June 2023 to the main dataset.  
-
-# My objective for this project was mainly to apply the skills learned during the Google course, in particular applying R to a topic I find interesting, 
-# as I don't really have a background in marketing or business, which was the focus of most of the course. In particular, I wanted to:
-
-# - clean and prepare a real life dataset
-# - use R for summarising the data
-# - create visualizations to present the data
-# - get used to troubleshooting and problem-solving based on help from internet fora and, for the later work, ChatGPT
-
-# The main idea of the project is to analyse the evolution of the 
-# security context in eastern DRC over the last 20 years, with a particular
-# focus on the last couple of years, and to formulate a few recommendations for stakeholders based on the data, if possible. 
-
-# I hope you enjoy and please feel free to comment. 
-
 # 1. THE DATASET
 
 # As said above, the dataset is from UCDP and covers the period from the
@@ -64,7 +39,7 @@ library(scales)
 # Loading the data 
 
 
-congo_raw <- read.csv("C:\\Users\\UserNA4944\\OneDrive - Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH\\Privat\\Data Analytics\\Data Sets\\Congo_Security_Incidents_Dataset2023.csv", head = TRUE, sep=";")
+congo_raw <- read.csv("yourfilepath.csv", head = TRUE, sep=";")
 
 str(congo_raw)
 
@@ -233,11 +208,7 @@ str(congo_clean)
 
 # Export of cleaned and final dataset as CSV file (";" as separator, "," for decimals )
 
-# the export is not included here
-
-
-
-
+# Export is not included here
 
 
 
@@ -249,7 +220,7 @@ str(congo_clean)
 # I will try to merge it with my base dataset (the version: January-June 2023: Version 23.01.23.06 (global)).
 # In January 2024, I will merge the second half of 2023, as soon as it gets available. 
 
-congo_raw23 <- read.csv("C:\\Users\\UserNA4944\\OneDrive - Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH\\Privat\\Data Analytics\\Data Sets\\Congo_Security_Incidents_Dataset2023_Jan-Jul23.csv", head = TRUE, sep=";")
+congo_raw23 <- read.csv("Dataset2023_Jan-Jul23.csv", head = TRUE, sep=";")
 str(congo_raw23)
 
 # Latitude and Longitude do not have the comma/dot delimiter, but I can get the data from the geom_wikt column
@@ -349,7 +320,7 @@ str(combined_congo)
 congo_clean <- combined_congo
 
 
-# write.csv2(congo_clean, "C:\\Users\\UserNA4944\\OneDrive - Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH\\Privat\\Data Analytics\\Projects\\Eastern Congo Security Incidents\\congo_database_june_2023.csv", row.names=F)
+# write.csv2(congo_clean, "yourfilepath.csv", row.names=F)
 
 
 
@@ -670,11 +641,8 @@ east_recent %>% group_by(conflict_dyad) %>% summarise(total_death_by_conflict=su
   labs(title="Deadliest conflict dyads in eastern Congo", x="Conflicts", y="Number of deaths", fill="Conflict Dyad")
 
 
---> hier schauen ob ich Balken noch einfärben kann nach M23, ADF usw.?
-
-
   
-  # Deadliest conflicts in NK
+# Deadliest conflicts in NK
 
 filter(east_recent, province=="Nord Kivu") %>% group_by(conflict_dyad) %>% summarise(total_death_by_conflict=sum(deaths_total)) %>% 
   arrange(-total_death_by_conflict) %>% head(n=10) %>% 
@@ -717,8 +685,6 @@ east %>% group_by(year, province, season) %>% summarise(t_d=sum(deaths_total),
 # in Ituri and Tanganyika, in NK, it is sometimes relatively equal, in other years
 # there are much more deaths during the dry season. 
 
---> include another correlation test here?
-
 
 # Seasonality in Ituri by territory
 
@@ -747,7 +713,7 @@ install.packages("ggmap", dependencies = TRUE)
 
 # registering online with Stadiamap
 
-register_stadiamaps(key="cea7b75d-e47c-40c5-854e-4008b8489ea1", write=TRUE)
+register_stadiamaps(key="your_API_key", write=TRUE)
 
 # fetching and trying the underlying maps with different map styles 
 
@@ -817,8 +783,7 @@ qmplot(longitude, latitude, color=date, size=deaths_total, data = M23_loc, alpha
         axis.ticks = element_blank())
 
 # Shows the evolution, going from Rutshuru's border area with Rwanda and Uganda into the area west of Virunga National Park
-# around Tongo and Kishishe, before descending into Masisi. However, I would have expected more
-# incidents in total to be honest.
+# around Tongo and Kishishe, before descending into Masisi. However, I would have expected more incidents in total.
 
 
   
@@ -914,7 +879,6 @@ qmplot(longitude, latitude, color=territory, size=deaths_total, data = SK_loc, a
 
 
 # Comparison of ADF lethality for civilians over different years
-
 
 
 qmplot(longitude, latitude, size=deaths_civilian, color=territory, data = ADF_loc, alpha=0.5, 
@@ -1155,7 +1119,7 @@ str(dataset_tableau)
 
 # Looks good, so I'll export as a CSV file: 
 
-write.csv2(dataset_tableau, "C:\\Users\\UserNA4944\\OneDrive - Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH\\Privat\\Data Analytics\\Projects\\Eastern Congo Security Incidents\\dataset_tableau.csv", row.names=F)
+write.csv2(dataset_tableau, "your_file_path.csv", row.names=F)
 
 
 # 7. Conclusion
