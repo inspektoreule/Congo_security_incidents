@@ -18,3 +18,8 @@ The main idea of the project is to analyse the evolution of the security context
 with a particular focus on the last couple of years, and to formulate a few recommendations for stakeholders based on the data, if possible. 
 
 I hope you enjoy and please feel free to comment.
+
+I also produced a Tableau dataset based on the dataset, covering the years 2016-2023 that you can find here: 
+
+https://public.tableau.com/views/CongoSecurityIncidents/CongoSecurityIncidents?:language=fr-FR&publish=yes&:display_count=n&:origin=viz_share_link
+
